@@ -1,0 +1,12 @@
+C:\GitProjects\source\repos\Worked\Worked.IoC\bin\Debug\net6.0\Worked.IoC.deps.json
+C:\GitProjects\source\repos\Worked\Worked.IoC\bin\Debug\net6.0\Worked.IoC.dll
+C:\GitProjects\source\repos\Worked\Worked.IoC\bin\Debug\net6.0\Worked.IoC.pdb
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.csproj.AssemblyReference.cache
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.AssemblyInfoInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.AssemblyInfo.cs
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.csproj.CoreCompileInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.dll
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\refint\Worked.IoC.dll
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\Worked.IoC.pdb
+C:\GitProjects\source\repos\Worked\Worked.IoC\obj\Debug\net6.0\ref\Worked.IoC.dll

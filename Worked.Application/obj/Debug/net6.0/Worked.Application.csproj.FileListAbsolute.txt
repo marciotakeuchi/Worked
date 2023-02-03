@@ -1,0 +1,12 @@
+C:\GitProjects\source\repos\Worked\Worked.Application\bin\Debug\net6.0\Worked.Application.deps.json
+C:\GitProjects\source\repos\Worked\Worked.Application\bin\Debug\net6.0\Worked.Application.dll
+C:\GitProjects\source\repos\Worked\Worked.Application\bin\Debug\net6.0\Worked.Application.pdb
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.csproj.AssemblyReference.cache
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.AssemblyInfoInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.AssemblyInfo.cs
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.csproj.CoreCompileInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.dll
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\refint\Worked.Application.dll
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\Worked.Application.pdb
+C:\GitProjects\source\repos\Worked\Worked.Application\obj\Debug\net6.0\ref\Worked.Application.dll

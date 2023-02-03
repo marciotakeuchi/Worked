@@ -1,0 +1,12 @@
+C:\GitProjects\source\repos\Worked\Worked.Domain\bin\Debug\net6.0\Worked.Domain.deps.json
+C:\GitProjects\source\repos\Worked\Worked.Domain\bin\Debug\net6.0\Worked.Domain.dll
+C:\GitProjects\source\repos\Worked\Worked.Domain\bin\Debug\net6.0\Worked.Domain.pdb
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.csproj.AssemblyReference.cache
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.AssemblyInfoInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.AssemblyInfo.cs
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.csproj.CoreCompileInputs.cache
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.dll
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\refint\Worked.Domain.dll
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\Worked.Domain.pdb
+C:\GitProjects\source\repos\Worked\Worked.Domain\obj\Debug\net6.0\ref\Worked.Domain.dll
