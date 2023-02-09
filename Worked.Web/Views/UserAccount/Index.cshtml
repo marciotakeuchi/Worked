@@ -1,0 +1,111 @@
+﻿@model ICollection<ApplicationUser>
+@{
+    ViewData["Title"] = "Gerenciar Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-start">
+            <a asp-action="Register" class="btn btn-primary">
+                <span title="Novo Cadastro" class="bi bi-pencil"></span> Novo Cadastro
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+@if (@ViewData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @ViewData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="container-fluid">
+    @if (Model.Any())
+    {
+        <table class="table table-hover" id="listUserAccounts">
+            <thead>
+                <tr>
+                    <th scope="col">UserId</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nome Completo</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item != null)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                            @if (item.Funcionario != null)
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Funcionario.Cpf)
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                </td>
+
+                                <td>
+                                </td>
+                            }
+                            <td>
+                                <a asp-action="Detalhar" asp-route-id="@item.FuncionarioId" title="Detalhar" class="btn btn-primary">
+                                    <span class="bi bi-eye"></span>
+                                </a>
+                                <a asp-action="Editar" asp-route-id="@item.FuncionarioId" title="Editar" class="btn btn-warning">
+                                    <span class="bi bi-pencil-square"></span>
+                                </a>
+                              @*  <a asp-action="Inativar" asp-route-id="@item.Id" title="Inativar" class="btn btn-danger">
+                    <span class="bi bi-dash-circle"></span>
+                    <a asp-action="Ativar" asp-route-id="@item.Id" title="Ativar" class="btn btn-success">
+                    <span class="bi bi-plus-circle"></span>
+                                </a>*@
+
+                                <button type="button" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modalExcluir_@item.FuncionarioId">
+                                    <span class="bi bi-trash"></span>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalExcluir_@item.FuncionarioId" tabindex="-1" aria-labelledby="modalLabel_@item.FuncionarioId" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modalLabel_@item.FuncionarioId">Excluir Usuário</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Deseja realmente excluir @item.Funcionario.Nome ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <a type="button" class="btn btn-primary" asp-route-id="@item.Id.ToString()" asp-action="Excluir">Excluir</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="h2">Não existem usuarios cadastrados. Clique <a class="link-info" asp-asp-controller="UserAccount" asp-action="Register"> aqui </a> para cadastrar </p>
+    }
+</div>

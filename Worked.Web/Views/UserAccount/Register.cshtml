@@ -1,0 +1,90 @@
+﻿@using Worked.Application.ViewModels;
+@model FuncionarioViewModel
+@{
+    ViewData["Title"] = "Novo Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+   // ICollection<SelectListItem> listaGestores = Model.ListaGestores.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Nome }).ToList();
+    // ICollection<SelectListItem> listaCargos = Model.ListaCargos.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Nome }).ToList();
+   // ICollection<SelectListItem> listaRegimes = Model.ListaRegimesTrabalhistas.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Descricao }).ToList();
+
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Informe os dados do usuario</h4>
+<hr />
+<form asp-action="Register">
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-floating pb-3">
+                <input asp-for="Nome" class="form-control" />
+                <label asp-for="Nome" class="control-label"></label>
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-floating pb-3">
+                <input asp-for="Cpf" class="form-control" maxlength="11" />
+                <label asp-for="Cpf" class="control-label"></label>
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-floating pb-3">
+                <input asp-for="DataNascimento" class="form-control" />
+                <label asp-for="DataNascimento" class="control-label"></label>
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-floating pb-3">
+                <input asp-for="Telefone" class="form-control" />
+                <label asp-for="Telefone"></label>
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating pb-3">
+                <select asp-for="GestorId" asp-items="@Model.ListaGestores.Select(x => new SelectListItem{ Value = x.Id.ToString(), Text = x.Nome})" class="form-select"></select>
+                <label asp-for="GestorId"></label>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-floating pb-3">
+                <select asp-for="CargoId" asp-items="@Model.ListaCargos.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Nome}).ToList()" class="form-select"></select>
+                <label asp-for="CargoId"></label>
+            </div>
+
+            <div class="form-floating pb-3">
+                <select asp-for="RegimeTrabalhistaId" asp-items="@Model.ListaRegimesTrabalhistas.Select(x => new SelectListItem {Value = x.Id.ToString(), Text = x.Descricao}).ToList()" class="form-select"></select>
+                <label asp-for="RegimeTrabalhistaId"></label>
+            </div>
+
+            <div class="form-floating pb-3">
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating pb-3">
+                <input asp-for="Senha" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Senha"></label>
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+            <div class="form-floating pb-3">
+                <input asp-for="ConfirmarSenha" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="ConfirmarSenha"></label>
+                <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+
+        </div>
+
+    </div>
+</form>
+<div>
+    <a asp-action="Index">Retornar à lista</a>
+</div>
+

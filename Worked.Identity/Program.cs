@@ -16,14 +16,14 @@ namespace Worked.Infra
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-                        builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            //            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => { options.SignIn.RequireConfirmedAccount = false;})
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => { options.SignIn.RequireConfirmedAccount = false; })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();

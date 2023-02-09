@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Worked.Domain.Models;
+using Worked.Domain.Entities;
 
 namespace Worked.Infra.Data.Map
 {
@@ -18,7 +18,6 @@ namespace Worked.Infra.Data.Map
             builder.Property(x => x.DataRegistro).HasColumnType("Datetime");
             builder.HasOne(x => x.TipoTarefa);
             builder.HasOne(x => x.Funcionario);
-            builder.HasOne(x => x.GestorAprovador);
         }
     }
 }

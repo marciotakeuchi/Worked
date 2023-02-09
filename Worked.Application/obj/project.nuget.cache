@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "jG6cr44HUCC5OqbeYlIxCDkY6WJvFpCmNJhYN6+lvog+PiFzlzAlBj8fHkzApICurNDpN7CHhUlKHMECmjUvXw==",
+  "dgSpecHash": "zhGsmKHcqxOaBsFTrJLfUJhw4tfSp77jsZKCLdF04h9k8+YBuhgEysQx5/6epCjp6gkk9JxOI1g5O+NdR08Ezg==",
   "success": true,
   "projectFilePath": "C:\\GitProjects\\source\\repos\\Worked\\Worked.Application\\Worked.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Takeuchi\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Takeuchi\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Worked.Infra.Data;
-using Worked.Infra.Models;
+using Worked.Infra.IoC;
+using Worked.Web.MappingConfig;
 
 namespace Worked.Web
 {
@@ -11,24 +9,10 @@ namespace Worked.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("CoonectionString DefaultConnection nao encontrado");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
-
-            //builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => { options.SignIn.RequireConfirmedAccount = false; })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
-
+            builder.AddInfrastruture(); // conexao do Identity e do dbContext
+            builder.AddAutoMapperConfiguration();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
-
-
 
             var app = builder.Build();
 
@@ -50,8 +34,8 @@ namespace Worked.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            
+                pattern: "{controller=Home}/{action=Login}/{id?}");
+
             app.MapRazorPages();
             app.Run();
         }

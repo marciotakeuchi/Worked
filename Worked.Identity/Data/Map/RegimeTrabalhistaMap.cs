@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Worked.Domain.Models;
+using Worked.Domain.Entities;
 
 namespace Worked.Infra.Data.Map
 {
@@ -11,12 +11,10 @@ namespace Worked.Infra.Data.Map
             builder.ToTable("RegimeTrabalhista");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Descricao).HasColumnType("varchar(500)");
-            builder.HasMany(x => x.Funcionarios);
-
             builder.HasData(
-                new RegimeTrabalhista(1,"Estágio"),
-                new RegimeTrabalhista(2,"CLT"),
-                new RegimeTrabalhista(3,"PJ")
+                new RegimeTrabalhista(1, "Estágio"),
+                new RegimeTrabalhista(2, "CLT"),
+                new RegimeTrabalhista(3, "PJ")
                 );
         }
     }

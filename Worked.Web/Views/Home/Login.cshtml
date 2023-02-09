@@ -1,0 +1,62 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Worked.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Worked.Web.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-repeat: round;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="row g-0">
+        <div class="col-sm-4 mx-auto bg-white bg-opacity-75 p-5 mt-5">
+            <section class="mx-auto">
+                <form id="login" method="post">
+                    <h1 class="text-center"><b>WoRkEd</b></h1>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating mb-3 mt-3">
+                        <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                        <label asp-for="Email" class="form-label"></label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 mt-3">
+                        <input asp-for="Senha" class="form-control" autocomplete="current-password" aria-required="true" />
+                        <label asp-for="Senha" class="form-label"></label>
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    <div class="btn-check mb-3 mt-3">
+                        <label asp-for="PermanecerLogado" class="form-label">
+                            <input asp-for="PermanecerLogado" class="form-check-input" />
+                            @Html.DisplayNameFor(m => m.PermanecerLogado)
+                        </label>
+                    </div>
+                    <hr />
+                    <div class="text-end">
+                        <button id="btn-login" class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

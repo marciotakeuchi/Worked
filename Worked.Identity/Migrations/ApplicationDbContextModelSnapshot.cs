@@ -17,7 +17,7 @@ namespace Worked.Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.11")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -48,6 +48,14 @@ namespace Worked.Infra.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c6fb1d37-ca61-4202-9baa-0fb0455714f5"),
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -132,6 +140,13 @@ namespace Worked.Infra.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("bafd5fe2-b9e2-461d-3254-08db06712de6"),
+                            RoleId = new Guid("c6fb1d37-ca61-4202-9baa-0fb0455714f5")
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -153,7 +168,7 @@ namespace Worked.Infra.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Cargo", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Cargo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -194,7 +209,7 @@ namespace Worked.Infra.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Funcionario", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Funcionario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,9 +254,22 @@ namespace Worked.Infra.Migrations
                     b.HasIndex("RegimeTrabalhistaId");
 
                     b.ToTable("Funcionario", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CargoId = 3,
+                            Cpf = "00000000000",
+                            DataNascimento = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Local),
+                            Email = "admin@admin.com",
+                            Nome = "Admin do Sistema",
+                            RegimeTrabalhistaId = 3,
+                            Telefone = "11 1111-1111"
+                        });
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.RegimeTrabalhista", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.RegimeTrabalhista", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -275,7 +303,7 @@ namespace Worked.Infra.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Tarefa", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Tarefa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -299,7 +327,7 @@ namespace Worked.Infra.Migrations
                     b.Property<bool>("Enviado")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("FuncionarioId")
+                    b.Property<int>("FuncionarioId")
                         .HasColumnType("int");
 
                     b.Property<int?>("GestorAprovadorId")
@@ -321,14 +349,12 @@ namespace Worked.Infra.Migrations
 
                     b.HasIndex("FuncionarioId");
 
-                    b.HasIndex("GestorAprovadorId");
-
                     b.HasIndex("TipoTarefaId");
 
                     b.ToTable("Tarefa", (string)null);
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.TipoTarefa", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.TipoTarefa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -343,6 +369,23 @@ namespace Worked.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoTarefa", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Projeto"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Atendimento Cliente"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Reuniões"
+                        });
                 });
 
             modelBuilder.Entity("Worked.Infra.Models.ApplicationUser", b =>
@@ -364,6 +407,9 @@ namespace Worked.Infra.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -398,10 +444,9 @@ namespace Worked.Infra.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int?>("funcionarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("FuncionarioId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -411,9 +456,26 @@ namespace Worked.Infra.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("funcionarioId");
-
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("bafd5fe2-b9e2-461d-3254-08db06712de6"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0ad875b5-b7e0-4221-aaf3-34f049f83ace",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            FuncionarioId = 1,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPYZ5UVCzSkt2f1iwr5DxO1MSNFBkOhQgUl4xOxhhWPEDbv/e2SPqjEb5Yvwmkww3g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "366JHU5SPKAVGFJTQW6WMHADSCJMZ7NP",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -467,20 +529,20 @@ namespace Worked.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Funcionario", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Funcionario", b =>
                 {
-                    b.HasOne("Worked.Domain.Models.Cargo", "Cargo")
-                        .WithMany("Funcionarios")
+                    b.HasOne("Worked.Domain.Entities.Cargo", "Cargo")
+                        .WithMany("Funcionario")
                         .HasForeignKey("CargoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Worked.Domain.Models.Funcionario", "Gestor")
+                    b.HasOne("Worked.Domain.Entities.Funcionario", "Gestor")
                         .WithMany()
                         .HasForeignKey("GestorId");
 
-                    b.HasOne("Worked.Domain.Models.RegimeTrabalhista", "RegimeTrabalhista")
-                        .WithMany("Funcionarios")
+                    b.HasOne("Worked.Domain.Entities.RegimeTrabalhista", "RegimeTrabalhista")
+                        .WithMany("Funcionario")
                         .HasForeignKey("RegimeTrabalhistaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -492,55 +554,50 @@ namespace Worked.Infra.Migrations
                     b.Navigation("RegimeTrabalhista");
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Tarefa", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Tarefa", b =>
                 {
-                   
-                    b.HasOne("Worked.Domain.Models.Funcionario", "Funcionario")
-                        .WithMany()
+                    b.HasOne("Worked.Domain.Entities.Funcionario", "Funcionario")
+                        .WithMany("Tarefas")
                         .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Worked.Domain.Models.Funcionario", "GestorAprovador")
-                        .WithMany()
-                        .HasForeignKey("GestorAprovadorId");
-
-                    b.HasOne("Worked.Domain.Models.TipoTarefa", "TipoTarefa")
+                    b.HasOne("Worked.Domain.Entities.TipoTarefa", "TipoTarefa")
                         .WithMany("Tarefas")
                         .HasForeignKey("TipoTarefaId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Funcionario");
-
-                    b.Navigation("GestorAprovador");
 
                     b.Navigation("TipoTarefa");
                 });
 
             modelBuilder.Entity("Worked.Infra.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Worked.Domain.Models.Funcionario", "funcionario")
+                    b.HasOne("Worked.Domain.Entities.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("funcionarioId");
+                        .HasForeignKey("FuncionarioId");
 
-                    b.Navigation("funcionario");
+                    b.Navigation("Funcionario");
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Cargo", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Cargo", b =>
                 {
-                    b.Navigation("Funcionarios");
+                    b.Navigation("Funcionario");
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.Funcionario", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.Funcionario", b =>
                 {
                     b.Navigation("Tarefas");
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.RegimeTrabalhista", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.RegimeTrabalhista", b =>
                 {
-                    b.Navigation("Funcionarios");
+                    b.Navigation("Funcionario");
                 });
 
-            modelBuilder.Entity("Worked.Domain.Models.TipoTarefa", b =>
+            modelBuilder.Entity("Worked.Domain.Entities.TipoTarefa", b =>
                 {
                     b.Navigation("Tarefas");
                 });

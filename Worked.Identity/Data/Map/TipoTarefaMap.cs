@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Worked.Domain.Models;
+using Worked.Domain.Entities;
 
 namespace Worked.Infra.Data.Map
 {
@@ -11,7 +11,11 @@ namespace Worked.Infra.Data.Map
             builder.ToTable("TipoTarefa");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Descricao).HasColumnType("varchar(500)");
-            builder.HasMany(x => x.Tarefas);
+            builder.HasData(
+                new TipoTarefa(1, "Projeto"),
+                new TipoTarefa(2, "Atendimento Cliente"),
+                new TipoTarefa(3, "Reuniões")
+                );
         }
     }
 }
